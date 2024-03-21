@@ -2,13 +2,13 @@
 
 
 if not getconnections or not hookmetamethod or not getnamecallmethod or not ((getgenv and getgenv()) or _G) then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Mikeexc Admin",Text = "Executor is not supported!",Duration = 10,})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "ShieldCrpyt Admin",Text = "Executor is not supported!",Duration = 10,})
 end
 if not workspace:FindFirstChild("Criminals Spawn") or not workspace:FindFirstChild("Criminals Spawn"):FindFirstChild("SpawnLocation") then
-	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Mikeexc Admin",Text = "Criminals spawn not found! Please rejoin.",Duration = 10,})
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "ShieldCrpyt Admin",Text = "Criminals spawn not found! Please rejoin.",Duration = 10,})
 end
 game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-if game:FindFirstChild("Mikeexc_revamp_loaded") then  ((getgenv and getgenv()) or _G).NotifMikeexc("Mikeexc Admin is already executed!",false) return warn("Already loaded") end
+if game:FindFirstChild("ShieldCrpyt_revamp_loaded") then  ((getgenv and getgenv()) or _G).NotifShieldCrpyt("ShieldCrpyt Admin is already executed!",false) return warn("Already loaded") end
 local Player, plr,Folder = game:GetService("Players").LocalPlayer, game:GetService("Players").LocalPlayer,Instance.new("Folder",game)
 local OldHook, hookmetamethod, getnamecallmethod = nil, hookmetamethod, getnamecallmethod
 local HasGamepass,UserInputService = game:GetService("MarketplaceService"):UserOwnsGamePassAsync(Player.UserId, 96651),game:GetService("UserInputService")
@@ -21,10 +21,10 @@ local PremiumActivated = API_Prem.CheckPremium()
 local Temp = {}
 local API = {}
 local Reload_Guns = {}
-local Prefix = "m"
+local Prefix = "S"
 
 --------
-Folder.Name = "Mikeexc_revamp_loaded"
+Folder.Name = "ShieldCrpyt_revamp_loaded"
 ScreenGui = Instance.new("ScreenGui")
 CmdBarFrame = Instance.new("Frame")
 UICorner = Instance.new("UICorner")
@@ -283,7 +283,7 @@ function API:CreateCmd(Header, Description, Callback,IsHide,Extra,IsPre,plsdonot
 				Callback(Split)
 			end)
 			if not a and b then
-				warn("--> Mikeexc Admin DETECTED AN ERROR")
+				warn("--> ShieldCrpyt Admin DETECTED AN ERROR")
 				warn("COMMAND: "..Prefix..Header)
 				warn("ERROR: "..tostring(b))
 			end
@@ -360,12 +360,12 @@ function API:Notif(Text,Dur)
 	end)
 	return
 end
-GlobalVar.NotifMikeexc = function(t,v)
+GlobalVar.NotifShieldCrpyt = function(t,v)
 	API:Notif(t,v)
 end
 local States = {}
 local Settings = {
-	Prefix = "m",
+	Prefix = "S",
 	ValidCommands = {},
 }
 local OrginMenuPos = Player.PlayerGui.Home.hud.MenuButton.Position
@@ -416,17 +416,17 @@ do
 end
 
 if writefile and makefolder and readfile and isfile then
-	if isfile("Mikeexc Admin") == false or isfile("Mikeexc_Admin/Invite.json") == false then
-		makefolder("Mikeexc_Admin")
-		if isfile("Mikeexc_Admin/Invite.json") == false then
-			writefile("Mikeexc_Admin/Invite.json",game:GetService("HttpService"):JSONEncode({
+	if isfile("ShieldCrpyt Admin") == false or isfile("ShieldCrpyt_Admin/Invite.json") == false then
+		makefolder("ShieldCrpyt_Admin")
+		if isfile("ShieldCrpyt_Admin/Invite.json") == false then
+			writefile("ShieldCrpyt_Admin/Invite.json",game:GetService("HttpService"):JSONEncode({
 				Invite_To_Server = true
 			}))
 		end
-		if isfile("Mikeexc_Admin/SavedAdmins.json") == false then
-			writefile("Mikeexc_Admin/SavedAdmins.json",game:GetService("HttpService"):JSONEncode({}))
+		if isfile("ShieldCrpyt_Admin/SavedAdmins.json") == false then
+			writefile("ShieldCrpyt_Admin/SavedAdmins.json",game:GetService("HttpService"):JSONEncode({}))
 		else
-			local Content = game:GetService("HttpService"):JSONDecode(readfile("Mikeexc_Admin/SavedAdmins.json"))
+			local Content = game:GetService("HttpService"):JSONDecode(readfile("ShieldCrpyt_Admin/SavedAdmins.json"))
 			for i,v in pairs(Content) do
 				if v then
 					table.insert(Temp.Admins, v)
@@ -438,7 +438,7 @@ end
 
 task.spawn(function()
 	if writefile and makefolder and readfile and isfile then
-		if game:GetService("HttpService"):JSONDecode(readfile("Mikeexc_Admin/Invite.json")).Invite_To_Server then
+		if game:GetService("HttpService"):JSONDecode(readfile("ShieldCrpyt_Admin/Invite.json")).Invite_To_Server then
 			local Request_ = (syn and syn.request) or http_request or request
 			Request_({
 				Url = 'http://127.0.0.1:6463/rpc?v=1',
@@ -1276,8 +1276,8 @@ do
 		API:CreateCmd("lag", "lags the server", function(args)
 			API:lag()
 		end,nil,nil,true)
-		API:CreateCmd("kick", "!KICKS Mikeexc Admin USERS ONLY! SAY IN CHAT", function(args)
-		end,nil,"[Mikeexc Admin USER]",true)
+		API:CreateCmd("kick", "!KICKS ShieldCrpyt Admin USERS ONLY! SAY IN CHAT", function(args)
+		end,nil,"[ShieldCrpyt Admin USER]",true)
 		API:CreateCmd("prefix", "Sets a different prefix", function(args)
 			local New = args[2]
 			if New and tostring(New) then
@@ -1654,7 +1654,7 @@ do
 		API:CreateCmd("oneshot", "Makes a gun oneshot", function(args)
 			ChangeState(args[2],"OneShot")
 		end,nil,"[ON/OFF]",true)
-		API:CreateCmd("anticrash", "Tries to stop simple crashes (DOESNT WORK WITH Mikeexc Admin CRASH)", function(args)
+		API:CreateCmd("anticrash", "Tries to stop simple crashes (DOESNT WORK WITH ShieldCrpyt Admin CRASH)", function(args)
 			local Value = ChangeState(args[2],"anticrash")
 			if Value then
 				pcall(function()
@@ -1927,7 +1927,7 @@ do
 		API:CreateCmd("autoadmin", "Admins someone even if you leave and rejoin", function(args)
 			local Target = API:FindPlayer(args[2])
 			if Target then
-				local Content = game:GetService("HttpService"):JSONDecode(readfile("Mikeexc_Admin/SavedAdmins.json"))
+				local Content = game:GetService("HttpService"):JSONDecode(readfile("ShieldCrpyt_Admin/SavedAdmins.json"))
 				local Found = API:FindString(Target.Name,Content)
 				local New = {}
 				for i,v in pairs(Content) do
@@ -1940,7 +1940,7 @@ do
 					local ohString1 = "/w "..Target.Name.." ".."ADMIN: You have been Autoadmined type [!cmds] in chat to get started!"
 					local ohString2 = "All"
 					game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(ohString1, ohString2)
-					writefile("Mikeexc_Admin/SavedAdmins.json",game:GetService("HttpService"):JSONEncode(New))
+					writefile("ShieldCrpyt_Admin/SavedAdmins.json",game:GetService("HttpService"):JSONEncode(New))
 					API:Notif("Player has been autoadmined")
 				end
 			end
@@ -1949,7 +1949,7 @@ do
 		API:CreateCmd("unautoadmin", "unauto admins a player", function(args)
 			local Target = API:FindPlayer(args[2])
 			if Target then
-				local Content = game:GetService("HttpService"):JSONDecode(readfile("Mikeexc_Admin/SavedAdmins.json"))
+				local Content = game:GetService("HttpService"):JSONDecode(readfile("ShieldCrpyt_Admin/SavedAdmins.json"))
 				local Found = API:FindString(Target.Name,Content)
 				local New = {}
 				for i,v in pairs(Content) do
@@ -1962,7 +1962,7 @@ do
 					table.remove(Temp.Admins,table.find(Temp.Admins,Target.Name))
 				end)
 				if Found then
-					writefile("Mikeexc_Admin/SavedAdmins.json",game:GetService("HttpService"):JSONEncode(New))
+					writefile("ShieldCrpyt_Admin/SavedAdmins.json",game:GetService("HttpService"):JSONEncode(New))
 					API:Notif("Player has been removed from autoadmin list")
 				end
 			end
@@ -1984,7 +1984,7 @@ do
 		end,nil,"[ON/OFF]",true)
 	end
 	--//end of premium
-	API:CreateCmd("drag", "Enables draggable mode for all Mikeexc guis", function(args)
+	API:CreateCmd("drag", "Enables draggable mode for all ShieldCrpyt guis", function(args)
 		local Value = ChangeState(args[2],"DraggableGuis")
 	end,nil,"- ENABLES DRAGGABLE GUIS")
 	API:CreateCmd("js", "owner", function(args)
@@ -2558,7 +2558,7 @@ do
 	end,nil,"[on/off]")
 	API:CreateCmd("noinvite", "disables discord invite", function(args)
 		if writefile and readfile then
-			writefile("Mikeexc_Admin/Invite.json",game:GetService("HttpService"):JSONEncode({Invite_To_Server=false}))
+			writefile("ShieldCrpyt_Admin/Invite.json",game:GetService("HttpService"):JSONEncode({Invite_To_Server=false}))
 			API:Notif("Discord invite has been disabled!")
 		else
 			API:Notif("executor not supported.")
@@ -2931,8 +2931,8 @@ do
 	API:CreateCmd("re", "refreshes your character", function(args)
 		API:Refresh(true)
 	end, true)
-	API:CreateCmd("allcmds", "tells you the ammount of commands Mikeexc Admin has", function(args)
-		API:Notif("Mikeexc Admin has "..tostring(AmmountCurrent).." commands.")
+	API:CreateCmd("allcmds", "tells you the ammount of commands ShieldCrpyt Admin has", function(args)
+		API:Notif("ShieldCrpyt Admin has "..tostring(AmmountCurrent).." commands.")
 	end)
 
 	API:CreateCmd("serverhop", "Joins a different server", function(args)
@@ -3077,7 +3077,7 @@ do
 		end
 	end)
 	API:CreateCmd("unload", "Destroys the script unloading it", function(args)
-		API:Destroy(game:FindFirstChild("Mikeexc_revamp_loaded"))
+		API:Destroy(game:FindFirstChild("ShieldCrpyt_revamp_loaded"))
 		Unloaded = true
 
 		for i,v in pairs(States) do
@@ -4170,5 +4170,5 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	end
 end)
 local DefaultChatSystemChatEvents = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents
-API:Notif("Mikeexc Admin By Mikeexc",nil,true)
+API:Notif("ShieldCrpyt Admin By ShieldCrpyt",nil,true)
 CmdBarFrame:TweenPosition(UDim2.new(0.5, 0, 0.899999998, 0)-UDim2.new(0,0,.05,0),"Out","Back",.5)
