@@ -365,7 +365,7 @@ GlobalVar.NotifShieldCrypt = function(t,v)
 end
 local States = {}
 local Settings = {
-	Prefix = "m",
+	Prefix = "S",
 	ValidCommands = {},
 }
 local OrginMenuPos = Player.PlayerGui.Home.hud.MenuButton.Position
